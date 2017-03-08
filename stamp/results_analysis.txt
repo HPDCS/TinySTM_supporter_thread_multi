@@ -1,0 +1,39 @@
+vacation++
+1 1 0.000276
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 1 	total_no_tx_time 0.016160 wasted time 0.000000 usefull time 0.132492
+vacation++
+1 1 0.000273
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 1 	total_no_tx_time 0.015876 wasted time 0.000000 usefull time 0.135066
+1 1 0.000301
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 2 	total_no_tx_time 0.016203 wasted time 0.000000 usefull time 0.194182
+1 1 0.000306
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 3 	total_no_tx_time 0.020971 wasted time 0.000000 usefull time 0.289940
+1 1 0.000411
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 4 	total_no_tx_time 0.021001 wasted time 0.000000 usefull time 0.411158
+genome++
+1 1 20.601587
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 2489218 	total_no_tx_time 534.926392 wasted time 0.000000 usefull time 40726.644531
+2 1 11.078541
+	total supporter aborted: 925 error: 0 	extended: 310921 	total aborted: 1134 	total prepares: 2490352 	total_no_tx_time 5731.900391 wasted time 428.672424 usefull time 38657.695312
+3 1 7.508947
+	total supporter aborted: 2684 error: 0 	extended: 515616 	total aborted: 3003 	total prepares: 2492221 	total_no_tx_time 8697.547852 wasted time 827.031555 usefull time 35817.750000
+4 1 5.899952
+	total supporter aborted: 4197 error: 0 	extended: 688767 	total aborted: 4696 	total prepares: 2493916 	total_no_tx_time 8516.359375 wasted time 1396.195435 usefull time 37606.871094
+kmeans
+1 1 38.771
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 4106954 	total_no_tx_time 10843.567383 wasted time 0.000000 usefull time 67791.046875
+2 1 19.2164
+	total supporter aborted: 24342 error: 1 	extended: 2041704 	total aborted: 188410 	total prepares: 3945879 	total_no_tx_time 10278.609375 wasted time 2708.048828 usefull time 64860.222656
+3 1 10.6571
+	total supporter aborted: 67804 error: 4 	extended: 3609395 	total aborted: 317694 	total prepares: 3463518 	total_no_tx_time 9133.358398 wasted time 4483.290039 usefull time 51454.152344
+4 1 11.5908
+	total supporter aborted: 133362 error: 0 	extended: 6431066 	total aborted: 634334 	total prepares: 4916199 	total_no_tx_time 12344.706055 wasted time 9759.952148 usefull time 71918.195312
+intruder
+1 1 95.737073
+	total supporter aborted: 0 error: 0 	extended: 0 	total aborted: 0 	total prepares: 23428126 	total_no_tx_time 24292.691406 wasted time 0.000000 usefull time 173811.562500
+2 1 59.477912
+	total supporter aborted: 92300 error: 2565 	extended: 9100346 	total aborted: 554239 	total prepares: 23982366 	total_no_tx_time 19074.843750 wasted time 15948.689453 usefull time 206680.437500
+3 1 44.483561
+	total supporter aborted: 190474 error: 710 	extended: 18445052 	total aborted: 1018782 	total prepares: 24446910 	total_no_tx_time 23482.609375 wasted time 31608.904297 usefull time 216404.859375
+4 1 43.257560
+	total supporter aborted: 387178 error: 1151 	extended: 26358002 	total aborted: 1766298 	total prepares: 25194427 	total_no_tx_time 25645.708984 wasted time 61697.937500 usefull time 265120.968750
