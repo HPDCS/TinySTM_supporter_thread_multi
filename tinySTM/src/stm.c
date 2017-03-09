@@ -2053,11 +2053,11 @@ int stm_commit(TXPARAM)
 
 #ifdef SUPPORTER_THREAD
   tx->running_transaction=0;
-	if (tx->should_abort && tx->current_run_checked) {
+	/*if (tx->should_abort && tx->current_run_checked) {
 		//print_readset(tx);
 		printf("\n\t\t\tshould_abort: %i ", GET_CLOCK);
 		fflush(stdout);
-	}
+	}*/
 #endif /* ! SUPPORTER_THREAD */
 
 
