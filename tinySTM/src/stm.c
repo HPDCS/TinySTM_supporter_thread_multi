@@ -1609,7 +1609,7 @@ void run_supporter_thread(void * data) {
 
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
+	  __CPU_SET_S((main_thread_id*4), sizeof(cpu_set_t), cpuSetMask);
 	  // set thread affinity
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
@@ -1895,7 +1895,7 @@ TXTYPE stm_init_thread()
 
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-  __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
+  __CPU_SET_S(i*4+16, sizeof(cpu_set_t), cpuSetMask);
   // set thread affinity
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
