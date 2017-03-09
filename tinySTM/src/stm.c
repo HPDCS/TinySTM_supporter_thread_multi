@@ -1617,12 +1617,7 @@ void run_supporter_thread(void * data) {
 	 */
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
-   int w=0;
-	while(1) {
-		//now=CLOCK;
-		for (w=0;w<100;) w++;
-	}
-	printf("\nsupporter thread");
+
 	while(1) {
 
 		for (i=main_thread_id; i<main_thread_id+((run_supporter_thread_data_t*) data)->supported_threads; i++) {
@@ -1633,14 +1628,14 @@ void run_supporter_thread(void * data) {
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
-			now=CLOCK;
+			//now=CLOCK;
 			/*
 			if (now<=stm_tx_pointer->end) {
 				printf("\nnow = stm_tx_pointer->end = %llu", now);
 				continue;
 			}
 			printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
-			*/
+
 			stm_tx_pointer->current_run_checked=1;
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
@@ -1655,7 +1650,7 @@ void run_supporter_thread(void * data) {
 				//printf("\set should_abort thread_id: %lu", stm_tx_pointer->thread_id);
 				//fflush(stdout);
 			}
-
+			 */
 
 		}
 	}
