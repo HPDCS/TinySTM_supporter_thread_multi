@@ -1620,7 +1620,7 @@ void run_supporter_thread(void * data) {
    int w=0;
 	while(1) {
 		now=CLOCK;
-		for (w=0;w<10;) w++;
+		for (w=0;w<100;) w++;
 	}
 	printf("\nsupporter thread");
 	while(1) {
