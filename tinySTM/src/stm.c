@@ -1642,6 +1642,8 @@ void run_supporter_thread(void * data) {
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
 			//pthread_spin_unlock(&test_spinlock);
+			 */
+
 			if (_stm_validate(stm_tx_pointer)) {
 				stm_tx_pointer->new_start_timestamp = now;
 				//printf("\nCan extend: thread_id %lu from %i to %i ",stm_tx_pointer->thread_id, stm_tx_pointer->end,now);
@@ -1652,7 +1654,7 @@ void run_supporter_thread(void * data) {
 				//printf("\set should_abort thread_id: %lu", stm_tx_pointer->thread_id);
 				//fflush(stdout);
 			}
-			 */
+
 
 		}
 	}
