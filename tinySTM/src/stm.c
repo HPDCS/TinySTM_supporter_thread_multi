@@ -1621,7 +1621,7 @@ void run_supporter_thread(void * data) {
 	while(1) {
 		w++;
 	}
-
+	printf("\nsupporter thread");
 	while(1) {
 
 		for (i=main_thread_id; i<main_thread_id+((run_supporter_thread_data_t*) data)->supported_threads; i++) {
