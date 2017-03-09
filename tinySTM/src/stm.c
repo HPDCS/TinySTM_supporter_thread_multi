@@ -2043,7 +2043,7 @@ int stm_commit(TXPARAM)
 
 
   //printf("\n\t\t\tclock before: %i ", GET_CLOCK);
-  /*
+
 #ifdef SUPPORTER_THREAD
   tx->running_transaction=0;
 	if (tx->should_abort && tx->current_run_checked) {
