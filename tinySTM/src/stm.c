@@ -1645,7 +1645,7 @@ void run_supporter_thread(void * data) {
 			 */
 
 			if (_stm_validate(stm_tx_pointer)) {
-				stm_tx_pointer->new_start_timestamp = now;
+				//stm_tx_pointer->new_start_timestamp = now;
 				//printf("\nCan extend: thread_id %lu from %i to %i ",stm_tx_pointer->thread_id, stm_tx_pointer->end,now);
 				//fflush(stdout);
 			} else {
