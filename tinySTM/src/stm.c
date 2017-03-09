@@ -1617,6 +1617,11 @@ void run_supporter_thread(void * data) {
 	 */
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
+
+	while(1) {
+		now=CLOCK;
+	}
+
 	while(1) {
 
 		for (i=main_thread_id; i<main_thread_id+((run_supporter_thread_data_t*) data)->supported_threads; i++) {
