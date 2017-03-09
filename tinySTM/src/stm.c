@@ -1619,7 +1619,7 @@ void run_supporter_thread(void * data) {
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
    int w=0;
 	while(1) {
-		now=CLOCK;
+		//now=CLOCK;
 		for (w=0;w<100;) w++;
 	}
 	printf("\nsupporter thread");
