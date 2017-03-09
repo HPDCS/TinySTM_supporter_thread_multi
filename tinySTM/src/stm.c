@@ -1606,15 +1606,15 @@ void run_supporter_thread(void * data) {
 
 	stm_tx_t *stm_tx_pointer;
 	//move this thread on its CPU-core
-
+	/*
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-	  __CPU_SET_S((main_thread_id*4)+4, sizeof(cpu_set_t), cpuSetMask);
+	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
 	  // set thread affinity
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
 	  }
-
+	 */
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
 
@@ -1629,13 +1629,13 @@ void run_supporter_thread(void * data) {
 			//fflush(stdout);
 
 			now=CLOCK;
-			/*
+
 			if (now<=stm_tx_pointer->end) {
-				printf("\nnow = stm_tx_pointer->end = %llu", now);
+				//printf("\nnow = stm_tx_pointer->end = %llu", now);
 				continue;
 			}
-			printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
-		*/
+			//printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
+
 
 			stm_tx_pointer->current_run_checked=1;
 			/*
@@ -1892,15 +1892,15 @@ TXTYPE stm_init_thread()
 
 
   //move this thread on its CPU-core
-
+  /*
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-  __CPU_SET_S(i*4, sizeof(cpu_set_t), cpuSetMask);
+  __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
   // set thread affinity
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
   }
-
+  */
 
 #endif /* ! SUPPORTER_THREAD */
 
