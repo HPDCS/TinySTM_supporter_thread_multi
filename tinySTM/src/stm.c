@@ -1635,22 +1635,22 @@ void run_supporter_thread(void * data) {
 				continue;
 			}
 			printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
-
+			 */
 			stm_tx_pointer->current_run_checked=1;
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
 			//pthread_spin_unlock(&test_spinlock);
 			if (_stm_validate(stm_tx_pointer)) {
-				stm_tx_pointer->new_start_timestamp = now;
+				//stm_tx_pointer->new_start_timestamp = now;
 				//printf("\nCan extend: thread_id %lu from %i to %i ",stm_tx_pointer->thread_id, stm_tx_pointer->end,now);
 				//fflush(stdout);
 			} else {
 				//printf("\nsetting should_abort: time: %i ", now);
-				stm_tx_pointer->should_abort=1;
+				//stm_tx_pointer->should_abort=1;
 				//printf("\set should_abort thread_id: %lu", stm_tx_pointer->thread_id);
 				//fflush(stdout);
 			}
-			 */
+
 
 		}
 	}
