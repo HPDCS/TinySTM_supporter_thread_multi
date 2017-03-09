@@ -1628,7 +1628,11 @@ void run_supporter_thread(void * data) {
 			//fflush(stdout);
 
 			now=CLOCK;
-			if (now<=stm_tx_pointer->end) continue;
+			if (now<=stm_tx_pointer->end) {
+				printf("Now = stm_tx_pointer->end");
+				continue;
+			}
+			printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
 			stm_tx_pointer->current_run_checked=1;
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
