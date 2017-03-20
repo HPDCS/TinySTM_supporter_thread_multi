@@ -1628,6 +1628,7 @@ void run_supporter_thread(void * data) {
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
+			/*
 			now=CLOCK;
 
 			if (now<=stm_tx_pointer->end) {
@@ -1638,11 +1639,11 @@ void run_supporter_thread(void * data) {
 
 
 			stm_tx_pointer->current_run_checked=1;
-			/*
+
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
 			//pthread_spin_unlock(&test_spinlock);
-			 */
+
 
 			if (_stm_validate(stm_tx_pointer)) {
 				stm_tx_pointer->new_start_timestamp = now;
@@ -1654,6 +1655,7 @@ void run_supporter_thread(void * data) {
 				//printf("\set should_abort thread_id: %lu", stm_tx_pointer->thread_id);
 				//fflush(stdout);
 			}
+			*/
 
 
 		}
