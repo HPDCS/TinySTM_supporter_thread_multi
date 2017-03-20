@@ -1629,7 +1629,7 @@ void run_supporter_thread(void * data) {
 			//fflush(stdout);
 
 
-			//now=CLOCK;
+			now=CLOCK;
 			/*
 			if (now<=stm_tx_pointer->end) {
 				//printf("\nnow = stm_tx_pointer->end = %llu", now);
