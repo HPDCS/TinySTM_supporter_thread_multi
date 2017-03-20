@@ -1624,13 +1624,13 @@ void run_supporter_thread(void * data) {
 
 			stm_tx_pointer=stm_tx_pointers[i];
 			if (stm_tx_pointer==NULL) continue;
-			if (!stm_tx_pointer->running_transaction || stm_tx_pointer->should_abort) continue;
+			//if (!stm_tx_pointer->running_transaction || stm_tx_pointer->should_abort) continue;
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
-			/*
-			now=CLOCK;
 
+			//now=CLOCK;
+			/*
 			if (now<=stm_tx_pointer->end) {
 				//printf("\nnow = stm_tx_pointer->end = %llu", now);
 				continue;
