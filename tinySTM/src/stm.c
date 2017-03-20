@@ -1606,7 +1606,7 @@ void run_supporter_thread(void * data) {
 
 	stm_tx_t *stm_tx_pointer;
 	//move this thread on its CPU-core
-	/*
+
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
 	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
@@ -1614,7 +1614,7 @@ void run_supporter_thread(void * data) {
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
 	  }
-	 */
+
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
 
@@ -1624,13 +1624,12 @@ void run_supporter_thread(void * data) {
 
 			stm_tx_pointer=stm_tx_pointers[i];
 			if (stm_tx_pointer==NULL) continue;
-			//if (!stm_tx_pointer->running_transaction || stm_tx_pointer->should_abort) continue;
+			if (!stm_tx_pointer->running_transaction || stm_tx_pointer->should_abort) continue;
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
-
 			now=CLOCK;
-			/*
+
 			if (now<=stm_tx_pointer->end) {
 				//printf("\nnow = stm_tx_pointer->end = %llu", now);
 				continue;
@@ -1639,12 +1638,12 @@ void run_supporter_thread(void * data) {
 
 
 			stm_tx_pointer->current_run_checked=1;
-
+			/*
 			//pthread_spin_lock(&test_spinlock);
 			//int g=_stm_validate(main_stm_tx);
 			//pthread_spin_unlock(&test_spinlock);
+			 */
 
-*/
 			if (_stm_validate(stm_tx_pointer)) {
 				stm_tx_pointer->new_start_timestamp = now;
 				//printf("\nCan extend: thread_id %lu from %i to %i ",stm_tx_pointer->thread_id, stm_tx_pointer->end,now);
@@ -1655,7 +1654,6 @@ void run_supporter_thread(void * data) {
 				//printf("\set should_abort thread_id: %lu", stm_tx_pointer->thread_id);
 				//fflush(stdout);
 			}
-
 
 
 		}
@@ -1894,7 +1892,7 @@ TXTYPE stm_init_thread()
 
 
   //move this thread on its CPU-core
-  /*
+
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
   __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
@@ -1902,7 +1900,7 @@ TXTYPE stm_init_thread()
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
   }
-  */
+
 
 #endif /* ! SUPPORTER_THREAD */
 
