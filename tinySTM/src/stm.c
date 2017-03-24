@@ -1570,12 +1570,12 @@ static inline void check_should_abort() {
 		tx->running_transaction=0;
 		tx->aborts_supporter_validate_read++;
 
-		if (stm_validate(tx)) {
-			tx->error++;
+		//if (stm_validate(tx)) {
+			//tx->error++;
 			//TO_DO
 			//printf("\nerror");
 			//fflush(stdout);
-		}
+		//}
 
 		//printf("\n\t\t\tshould_abort - aborted: %i ", tx->aborts_supporter_validate_read);
 		//fflush(stdout);
