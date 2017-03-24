@@ -1606,7 +1606,7 @@ void run_supporter_thread(void * data) {
 
 	stm_tx_t *stm_tx_pointer;
 	//move this thread on its CPU-core
-	/*
+
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
 	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
@@ -1614,7 +1614,7 @@ void run_supporter_thread(void * data) {
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
 	  }
-	 */
+
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
 
@@ -1892,7 +1892,7 @@ TXTYPE stm_init_thread()
 
 
   //move this thread on its CPU-core
-  /*
+
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
   __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
@@ -1900,7 +1900,7 @@ TXTYPE stm_init_thread()
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
   }
-  */
+
 
 #endif /* ! SUPPORTER_THREAD */
 
