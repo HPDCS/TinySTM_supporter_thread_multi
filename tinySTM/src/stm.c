@@ -1570,12 +1570,12 @@ static inline void check_should_abort() {
 		tx->running_transaction=0;
 		tx->aborts_supporter_validate_read++;
 
-		//if (stm_validate(tx)) {
-			//tx->error++;
+		if (stm_validate(tx)) {
+			tx->error++;
 			//TO_DO
 			//printf("\nerror");
 			//fflush(stdout);
-		//}
+		}
 
 		//printf("\n\t\t\tshould_abort - aborted: %i ", tx->aborts_supporter_validate_read);
 		//fflush(stdout);
@@ -1628,7 +1628,7 @@ void run_supporter_thread(void * data) {
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
-			for(i=0;i<100;i++) {
+			for(i=0;i<1000;i++) {
 				__asm volatile ("pause" ::: "memory");
 			}
 
@@ -1639,6 +1639,7 @@ void run_supporter_thread(void * data) {
 				continue;
 			}
 			//printf("\nnow: %llu\tstm_tx_pointer->end: %llu", now, stm_tx_pointer->end);
+
 
 			stm_tx_pointer->current_run_checked=1;
 			/*
