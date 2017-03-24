@@ -1609,7 +1609,7 @@ void run_supporter_thread(void * data) {
 
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
+	  __CPU_SET_S((main_thread_id*2)+1, sizeof(cpu_set_t), cpuSetMask);
 	  // set thread affinity
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
@@ -1627,6 +1627,10 @@ void run_supporter_thread(void * data) {
 			if (!stm_tx_pointer->running_transaction || stm_tx_pointer->should_abort) continue;
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
+
+			for(i=0;i<max_cycles;i++) {
+				__asm volatile ("pause" ::: "memory");
+			}
 
 			now=CLOCK;
 
@@ -1895,7 +1899,7 @@ TXTYPE stm_init_thread()
 
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-  __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
+  __CPU_SET_S(i*2, sizeof(cpu_set_t), cpuSetMask);
   // set thread affinity
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
