@@ -1628,7 +1628,7 @@ void run_supporter_thread(void * data) {
 			//printf("\nsupporter thread %i is checking thread %i", supporter_thread_id,  i);
 			//fflush(stdout);
 
-			for(i=0;i<max_cycles;i++) {
+			for(i=0;i<100;i++) {
 				__asm volatile ("pause" ::: "memory");
 			}
 
