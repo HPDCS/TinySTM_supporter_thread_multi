@@ -1611,12 +1611,12 @@ void run_supporter_thread(void * data) {
 
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-	  __CPU_SET_S(main_thread_id+num_tm_threads, sizeof(cpu_set_t), cpuSetMask);
+	  __CPU_SET_S(main_thread_id*2+1, sizeof(cpu_set_t), cpuSetMask);
 	  // set thread affinity
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
 	  }
-    printf("\nSupporter thread %i scheduled on cpu %i",main_thread_id, main_thread_id+num_tm_threads);
+    printf("\nSupporter thread %i scheduled on cpu %i",main_thread_id, main_thread_id*2+1);
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
 
@@ -1898,12 +1898,12 @@ TXTYPE stm_init_thread()
 
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-  __CPU_SET_S(i, sizeof(cpu_set_t), cpuSetMask);
+  __CPU_SET_S(i*2, sizeof(cpu_set_t), cpuSetMask);
   // set thread affinity
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
   }
-      printf("\nMain thread %i scheduled on cpu %i", i,i);
+      printf("\nMain thread %i scheduled on cpu %i", i,i*2);
     fflush(stdout);
 
 
