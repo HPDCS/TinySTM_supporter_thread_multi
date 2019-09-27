@@ -2,9 +2,9 @@
 
 #!/bin/bash
 
-maxThread=16
-runPerThread=8
-
+maxThread=24
+runPerThread=1
+	
 #------------------------------------------------------------------------------------------------
 #------------------------------------------------------------------------------------------------
 echo yada+ >> results_analysis.txt
@@ -18,7 +18,7 @@ while [ $nthread -le $maxThread ]
 		while [ $k -lt $runPerThread ]
 			do
 			echo nice -20 ./yada/yada -a10 -i yada/inputs/ttimeu10000.2 -t$nthread -z$nsuppthread
-			nice -20 ./yada/yada -a10 -i yada/inputs/ttimeu10000.2 -t$nthread -z$nsuppthread >> results_analysis.txt
+			#nice -20 ./yada/yada -a10 -i yada/inputs/ttimeu10000.2 -t$nthread -z$nsuppthread >> results_analysis.txt
 			k=$[$k+1]
 		done
 		nsuppthread=$[$nsuppthread+1]
