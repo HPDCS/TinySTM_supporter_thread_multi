@@ -452,7 +452,7 @@ MAIN(argc, argv)
     GOTO_REAL();
     TIMER_READ(stop);
     //puts("done.");
-    printf("%i %i %f\n", numThread, numSupportedThreads, TIMER_DIFF_SECONDS(start, stop));
+    printf("%i %i %f", numThread, numSupportedThreads, TIMER_DIFF_SECONDS(start, stop));
     fflush(stdout);
     checkTables(managerPtr);
 

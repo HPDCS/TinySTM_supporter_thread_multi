@@ -322,7 +322,7 @@ MAIN(argc, argv)
     TIMER_READ(stop);
 
     //puts(" done.");
-    printf("%i %i %lf\n", global_numThread, global_numSupportedThreads, TIMER_DIFF_SECONDS(start, stop));
+    printf("%i %i %lf", global_numThread, global_numSupportedThreads, TIMER_DIFF_SECONDS(start, stop));
     fflush(stdout);
 
     /*

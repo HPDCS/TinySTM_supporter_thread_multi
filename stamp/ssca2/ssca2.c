@@ -495,7 +495,7 @@ MAIN(argc, argv)
 
 #endif /* ENABLE_KERNEL4 */
 
-    printf("%i %i %f\n", THREADS, NUMSUPPORTEDTHREADS,  totalTime);
+    printf("%i %i %f", THREADS, NUMSUPPORTEDTHREADS,  totalTime);
 
     /* -------------------------------------------------------------------------
      * Cleanup

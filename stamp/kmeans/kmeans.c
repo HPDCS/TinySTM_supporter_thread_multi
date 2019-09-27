@@ -389,7 +389,7 @@ MAIN(argc, argv)
     }
 #endif /* OUTPUT TO_STDOUT */
 
-    printf("%i %i %lg\n", nthreads, numSupportedThreads,  global_time);
+    printf("%i %i %lg", nthreads, numSupportedThreads,  global_time);
 
     //* RESULT TO FILE */
     FILE *results_file;

@@ -325,7 +325,7 @@ MAIN(argc, argv)
     GOTO_REAL();
     TIMER_T stopTime;
     TIMER_READ(stopTime);
-    printf("%i %i %f\n", numThread, numSupportedThreads, TIMER_DIFF_SECONDS(startTime, stopTime));
+    printf("%i %i %f", numThread, numSupportedThreads, TIMER_DIFF_SECONDS(startTime, stopTime));
 
     /*
      * Check solution

@@ -336,7 +336,7 @@ MAIN(argc, argv)
 
     //puts("done.");
     fflush(stdout);
-    printf("%i %i %f\n",numThread, numSupportedThread,TIMER_DIFF_SECONDS(adtreeStartTime, adtreeStopTime)+TIMER_DIFF_SECONDS(learnStartTime, learnStopTime));
+    printf("%i %i %f",numThread, numSupportedThread,TIMER_DIFF_SECONDS(adtreeStartTime, adtreeStopTime)+TIMER_DIFF_SECONDS(learnStartTime, learnStopTime));
     fflush(stdout);
 
     /*
