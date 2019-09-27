@@ -331,6 +331,7 @@ typedef struct stm_tx {                 /* Transaction descriptor */
   typedef struct _run_supporter_thread_data_t {
 	  int base_thread_id;
 	  int supported_threads;
+    int num_tm_threads;
   } run_supporter_thread_data_t;
 //statistics
 int aborts_supporter_validate_read=0;
@@ -1600,6 +1601,7 @@ void run_supporter_thread(void * data) {
 	stm_word_t now=0;
 	//int supporter_thread_id=pthread_self();
 	int main_thread_id=((run_supporter_thread_data_t*) data)->base_thread_id;
+  int num_tm_threads=((run_supporter_thread_data_t*) data)->num_tm_threads;
 
 	//printf("supporter_thread_id %i created, base thread %i\n", supporter_thread_id, main_thread_id );
 	//fflush(stdout);
@@ -1609,12 +1611,12 @@ void run_supporter_thread(void * data) {
 
 	  cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
 	  __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-	  __CPU_SET_S((main_thread_id*2)+1+16, sizeof(cpu_set_t), cpuSetMask);
+	  __CPU_SET_S(main_thread_id+num_tm_threads, sizeof(cpu_set_t), cpuSetMask);
 	  // set thread affinity
 	  if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
 	  	printf("\nsched_setaffinity error - errno: %i ",errno);
 	  }
-
+    printf("\nSupporter thread %i scheduled on cpu %i",main_thread_id, main_thread_id+num_tm_threads);
 
 	//int supporter_thread_ratio=((run_supporter_thread_data_t*) data)->supporter_thread_ratio;
 
@@ -1688,7 +1690,6 @@ void stm_init()
 
   //printf("supp_threads %i\n", numSupportedThreads);
   //fflush(stdout);
-
   //create #supp_threads  supporter threads
   int i;
   for (i=0;i<num_tm_threads;i++) {
@@ -1696,8 +1697,10 @@ void stm_init()
 		  run_supporter_thread_data_t* run_supporter_thread_data = malloc(sizeof(run_supporter_thread_data_t));
 		  run_supporter_thread_data->base_thread_id=i;
 		  run_supporter_thread_data->supported_threads=numSupportedThreads;
+      run_supporter_thread_data->num_tm_threads=num_tm_threads;
 		  pthread_t supporter_thread;
 		  pthread_create(&supporter_thread, NULL, (void *) &run_supporter_thread, (void *) run_supporter_thread_data);
+      printf("\nCreated supporter thread %i",i);
 	  }
   }
 
@@ -1895,11 +1898,13 @@ TXTYPE stm_init_thread()
 
   cpu_set_t *cpuSetMask=(cpu_set_t*)malloc(sizeof(cpu_set_t));
   __CPU_ZERO_S(sizeof(cpu_set_t),cpuSetMask);
-  __CPU_SET_S(i*2+16, sizeof(cpu_set_t), cpuSetMask);
+  __CPU_SET_S(i, sizeof(cpu_set_t), cpuSetMask);
   // set thread affinity
   if (sched_setaffinity(0, sizeof(cpu_set_t), cpuSetMask)!=0) {
   	printf("\nsched_setaffinity error - errno: %i ",errno);
   }
+      printf("\nMain thread %i scheduled on cpu %i", i,i);
+    fflush(stdout);
 
 
 #endif /* ! SUPPORTER_THREAD */
