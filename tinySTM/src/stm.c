@@ -1623,6 +1623,8 @@ void run_supporter_thread(void * data) {
 
 	while(1) {
 
+		while(CLOCK<=now){__asm volatile ("pause" ::: "memory");};
+
 		for (i=main_thread_id; i<main_thread_id+((run_supporter_thread_data_t*) data)->supported_threads; i++) {
 
 			stm_tx_pointer=stm_tx_pointers[i];
