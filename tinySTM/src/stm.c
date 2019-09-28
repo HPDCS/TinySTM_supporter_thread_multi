@@ -310,6 +310,7 @@ typedef struct stm_tx {                 /* Transaction descriptor */
   int extended;
   int total_prepares;
   int total_aborts;
+  int total_commits;
   int aborted;
   volatile int should_abort;
   volatile int running_transaction;
@@ -338,6 +339,7 @@ int aborts_supporter_validate_read=0;
 int error=0;
 int extended=0;
 int total_aborts=0;
+int total_commits=0;
 int total_prepares=0;
 #endif /* ! SUPPORTER_THREAD */
 
@@ -1762,6 +1764,7 @@ void stm_exit()
 #ifdef SUPPORTER_THREAD /* SUPPORTER_THREAD */
  printf("\ttotal supporter aborted: %i error: %i ", aborts_supporter_validate_read,error);
  printf("\textended: %i ", extended);
+ printf("\ttotal committed: %i ", total_commits);
  printf("\ttotal aborted: %i ", total_aborts);
  printf("\ttotal prepares: %i ", total_prepares);
 
@@ -1861,6 +1864,7 @@ TXTYPE stm_init_thread()
   tx->aborts_supporter_validate_read=0;
   tx->error=0;
   tx->extended=0;
+  tx->total_commits=0;
   tx->total_aborts=0;
   tx->total_prepares=0;
   tx->running_transaction=0;
@@ -1944,6 +1948,7 @@ void stm_exit_thread(TXPARAM)
    error+=tx->error;
    extended+=tx->extended;
    total_aborts+=tx->total_aborts;
+   total_commits+=tx->total_commits;
    total_prepares+=tx->total_prepares;
 #ifdef SUPPORTER_THREAD_TIMERS
    total_no_tx_time+=tx->total_no_tx_time;
@@ -2186,6 +2191,10 @@ int stm_commit(TXPARAM)
 
 
  end:
+
+#ifdef SUPPORTER_THREAD
+  tx->total_commits++;
+#endif /* ! SUPPORTER_THREAD */
 
 #ifdef SUPPORTER_THREAD_TIMERS
 
