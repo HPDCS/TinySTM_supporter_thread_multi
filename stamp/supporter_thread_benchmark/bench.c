@@ -55,16 +55,17 @@ void run (void* argPtr) {
 		for (ops=0; ops<num_op_per_tran; ops++) {
 			i=random_number(&pseed)*arraySize;
 			if (i==arraySize) i--;
-			//read a shared variable	
-			val=TM_SHARED_READ(shared_array[i]);
-			//update a shared variable
-			TM_SHARED_WRITE(shared_array[i],val);
+			if (random_number(&pseed)<read_prob) {
+				//read a shared variable	
+				val=TM_SHARED_READ(shared_array[i]);
+			} else {
+				//update a shared variable
+				TM_SHARED_WRITE(shared_array[i],val);
+			}
 		}
 
 		//simulating some computation..
 		spend_some_time();
-		i=random_number(&pseed)*arraySize;
-		TM_SHARED_WRITE(shared_array[i],val);
 		TM_END();
 	}	
 
